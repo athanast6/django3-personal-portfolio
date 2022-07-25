@@ -1,0 +1,23 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+
+<h1> ALL BLOGS HERE </h1>
+
+
+<h3> Tex has written {{ blogposts.count }} blog{{ blogposts.count|pluralize }}. </h3>
+
+<br> 
+{% for blogpost in blogposts %}
+<a href = {% url 'blog:detail' blogpost.id %}><h1> {{ blogpost.title }}</h1></a>
+<h2> {{ blogpost.date|date:'M d Y' }}</h2>
+<br> 
+<p> {{ blogpost.description|striptags|truncatechars:100 }} </p>
+<br>
+
+
+{% endfor %}
+<a href = "/">Back to Home</a>
+
+
+{% endblock %}
